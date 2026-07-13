@@ -1,36 +1,152 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Effy Zheng</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Effy Zheng</title>
+  <meta name="description" content="Effy Zheng — CS student at Monash University.">
+  <meta property="og:title" content="Effy Zheng">
+  <meta property="og:description" content="CS student at Monash University.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://effyzheng.github.io/">
+  <script>
+    (function () {
+      var t = localStorage.getItem('theme');
+      if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Hero -->
+  <button id="theme-toggle" aria-label="Toggle colour scheme"></button>
+
+  <main>
+
     <section id="hero">
-        <h1>Effy Zheng</h1>
-        <p>CS student · Reads bazi · Collects half-finished hobbies · Curious about everything</p>
+      <h1>Effy Zheng</h1>
+      <p class="tagline">CS student at Monash University</p>
+      <nav class="social-links" aria-label="Contact and social links">
+        <a href="https://github.com/EffyZheng" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/wanyan-zheng" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="#" data-email>Email</a>
+      </nav>
     </section>
 
-    <!-- About -->
     <section id="about">
-        <h2>About</h2>
-        <p>Write something about yourself here.</p>
+      <h2>About</h2>
+      <p>I like sports and I like sleeping — sometimes I have to choose one, and I don't always pick the active option. I tend to get interested in a little bit of everything, and I genuinely enjoy the feeling of filling my head with new information. Just not too much at once — I have limits. CS fits that well enough: there's always something to poke at, and the rabbit holes tend to be good ones.</p>
     </section>
 
-    <!-- Projects -->
     <section id="projects">
-        <h2>Projects</h2>
-        <p>Things I've built or worked on.</p>
+      <h2>Projects</h2>
+
+      <article class="project">
+        <h3>Winter Survival — Roguelike Game <span class="lang-tag">Java</span></h3>
+        <p class="project-meta">Course project · OOP Design · Aug – Nov 2025</p>
+        <ul>
+          <li>Extended and refactored an existing Java game engine following OO design principles</li>
+          <li>Used the strategy pattern for multi-type NPC behaviour to keep modules decoupled</li>
+          <li>Integrated the Google Gemini API to build autonomous NPCs with dynamic pricing and non-deterministic dialogue, behind an extensible agent abstraction layer</li>
+          <li>Added exception handling for the external API so the game degrades gracefully when the network fails</li>
+        </ul>
+      </article>
+
+      <article class="project">
+        <h3>Cryptocurrency Trading System <span class="lang-tag">Python</span></h3>
+        <p class="project-meta">Course project · Data Structures &amp; Algorithms · Sep – Oct 2025</p>
+        <ul>
+          <li>Built a trading engine on hash tables, linked lists, and custom iterators</li>
+          <li>Timestamp-based ordering and signing to guarantee transaction uniqueness</li>
+          <li>Recursive hash ledger with collision detection and automatic merging</li>
+        </ul>
+      </article>
+
+      <article class="project">
+        <h3>Social Network Platform <span class="lang-tag">Python / Flask</span></h3>
+        <p class="project-meta">Course project · OOP Design · Aug – Sep 2025</p>
+        <ul>
+          <li>Full system: user management, posting, session navigation, and social graph analysis</li>
+          <li>Image processing (flip / colour filters), password history, and feed merging</li>
+          <li>Asymmetric follow relationships with mutual-friend detection and cluster identification</li>
+        </ul>
+      </article>
+
+      <article class="project">
+        <h3>AI Fake Review Detection <span class="lang-tag">Hackathon</span></h3>
+        <p class="project-meta">Team · 48h Hackathon · Sep 2025</p>
+        <ul>
+          <li>Built the frontend and local environment under a 48-hour deadline</li>
+          <li>Configured AWS and got a working service demo running</li>
+          <li>Contributed to backend API work — learned Flask endpoint integration on the spot</li>
+        </ul>
+      </article>
+
+      <article class="project">
+        <h3>AVSCP — AI Compliance &amp; Safety Platform <span class="lang-tag">Design</span></h3>
+        <p class="project-meta">Course project · IT Ethics &amp; Professional Practice · Team of 6 · Figma · Mar – Jun 2025</p>
+        <ul>
+          <li>Translated an AI ethics framework into system requirements across privacy, transparency, regulatory compliance, and accountability</li>
+          <li>Designed a data-safety module using federated learning and differential privacy, with automated anonymisation rules</li>
+          <li>Built the full interactive prototype in Figma and presented the demo</li>
+        </ul>
+      </article>
+
+      <p class="project-note">Source for coursework projects is kept private under university policy — happy to walk through any of them.</p>
     </section>
 
-    <!-- Connect -->
-    <section id="connect">
-        <h2>Connect</h2>
-        <p>Find me on LinkedIn or send me an email.</p>
+    <section id="skills">
+      <h2>Skills</h2>
+      <dl class="skills-grid">
+        <dt>Languages</dt>
+        <dd>Python (proficient), Java, Oracle SQL, HTML, R</dd>
+
+        <dt>Systems &amp; Tools</dt>
+        <dd>Assembly (MARIE), Shell, Git, GitHub, GitLab</dd>
+
+        <dt>Frameworks &amp; Platforms</dt>
+        <dd>Flask, Google Gemini API, AWS</dd>
+
+        <dt>Typesetting</dt>
+        <dd>Typst, Overleaf (LaTeX)</dd>
+
+        <dt>AI Tooling</dt>
+        <dd>Claude Code, Claude.ai, Gemini</dd>
+
+        <dt>Spoken</dt>
+        <dd>Mandarin (native), English (PTE Academic 64)</dd>
+      </dl>
     </section>
 
+    <section id="education">
+      <h2>Education</h2>
+      <div class="edu-entry">
+        <div class="edu-header">
+          <strong>Monash University</strong>
+          <span>2025 – present</span>
+        </div>
+        <p>BSc Computer Science</p>
+        <p class="text-muted">Coursework: Data Structures &amp; Algorithms, OOP Design, Database Systems (Oracle SQL), Computer Systems &amp; Network Security, Assembly (MARIE), Data Analysis &amp; Modeling, Discrete Mathematics &amp; Probability</p>
+      </div>
+    </section>
+
+    <section id="currently-learning">
+      <h2>Currently Learning</h2>
+      <p>Japanese. Still at the stage where I'm proud of myself for reading a train sign correctly.</p>
+    </section>
+
+    <section id="looking-ahead">
+      <h2>Looking Ahead</h2>
+      <p>I'm still figuring out where I'm heading, and I think that's okay. The plan, as much as there is one, is to keep exploring, try things that seem interesting even if they don't work out, and gradually get clearer on what I'm actually good at and what I enjoy doing. I want to be genuinely useful — to the people I work with and to whoever uses what I build. If I can find situations where everyone involved comes out better off, that sounds like the right direction to aim for.</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Effy Zheng · <span id="footer-year"></span></p>
+  </footer>
+
+  <script src="main.js"></script>
 </body>
 </html>
