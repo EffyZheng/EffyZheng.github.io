@@ -7,7 +7,9 @@
   }
 
   function syncLabel() {
-    btn.textContent = currentTheme() === 'dark' ? '☀' : '☾';
+    const next = currentTheme() === 'dark' ? 'light' : 'dark';
+    btn.textContent = '[ ' + next + ' ]';
+    btn.setAttribute('aria-label', 'Switch to ' + next + ' mode');
   }
 
   btn.addEventListener('click', () => {
@@ -18,6 +20,27 @@
   });
 
   syncLabel();
+})();
+
+// Typewriter effect for hero tagline
+(function () {
+  const el = document.getElementById('tagline');
+  const full = el.textContent.trim();
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (reduced) return;
+
+  el.textContent = '';
+  let i = 0;
+
+  function tick() {
+    if (i < full.length) {
+      el.textContent += full[i++];
+      setTimeout(tick, 45);
+    }
+  }
+
+  setTimeout(tick, 500);
 })();
 
 // Email — assembled at runtime so the full address never appears in HTML source
