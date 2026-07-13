@@ -1,47 +1,285 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* ── Tokens ──────────────────────────────────────────────── */
+:root {
+  --bg: #ffffff;
+  --surface: #f5f5f4;
+  --text: #1c1917;
+  --text-muted: #78716c;
+  --border: #e7e5e4;
+  --accent: #1d4ed8;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111110;
+    --surface: #1c1b19;
+    --text: #f5f5f4;
+    --text-muted: #a8a29e;
+    --border: #292524;
+    --accent: #60a5fa;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #111110;
+  --surface: #1c1b19;
+  --text: #f5f5f4;
+  --text-muted: #a8a29e;
+  --border: #292524;
+  --accent: #60a5fa;
+}
+
+:root[data-theme="light"] {
+  --bg: #ffffff;
+  --surface: #f5f5f4;
+  --text: #1c1917;
+  --text-muted: #78716c;
+  --border: #e7e5e4;
+  --accent: #1d4ed8;
+}
+
+/* ── Reset ───────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Base ────────────────────────────────────────────────── */
+html {
+  font-size: 17px;
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    color: #1a1a1a;
-    background: #ffffff;
-    line-height: 1.6;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.65;
+  padding: 2rem 1.25rem 5rem;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+/* ── Layout ──────────────────────────────────────────────── */
+main {
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 section {
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 80px 24px;
+  margin-top: 3.75rem;
 }
 
 #hero {
-    padding-top: 140px;
-    padding-bottom: 140px;
+  margin-top: 4.5rem;
 }
 
-#hero h1 {
-    font-size: 3rem;
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    margin-bottom: 12px;
+/* ── Theme toggle ────────────────────────────────────────── */
+#theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 0.3rem 0.55rem;
+  font-size: 1rem;
+  line-height: 1;
+  z-index: 100;
 }
 
-#hero p {
-    font-size: 1.1rem;
-    color: #666;
+#theme-toggle:hover {
+  border-color: var(--accent);
+}
+
+/* ── Typography ──────────────────────────────────────────── */
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
 }
 
 h2 {
-    font-size: 1.4rem;
-    font-weight: 600;
-    margin-bottom: 16px;
-    color: #1a1a1a;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+}
+
+h3 {
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 p {
-    color: #444;
-    font-size: 1rem;
+  margin-top: 0.6rem;
+}
+
+p:first-child {
+  margin-top: 0;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+ul {
+  padding-left: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+li {
+  margin-top: 0.3rem;
+}
+
+strong {
+  font-weight: 600;
+}
+
+.text-muted {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+/* ── Hero ────────────────────────────────────────────────── */
+.tagline {
+  color: var(--text-muted);
+  margin-top: 0.35rem;
+  font-size: 1rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 1.25rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.social-links a {
+  font-size: 0.9rem;
+}
+
+/* ── Projects ────────────────────────────────────────────── */
+.project {
+  border-top: 1px solid var(--border);
+  padding-top: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.project:first-of-type {
+  border-top: none;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.lang-tag {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.1em 0.4em;
+  margin-left: 0.4em;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.project-meta {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 0.15rem;
+}
+
+.project-note {
+  margin-top: 1.75rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* ── Skills ──────────────────────────────────────────────── */
+.skills-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.65rem 1.5rem;
+  align-items: baseline;
+}
+
+.skills-grid dt {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.skills-grid dd {
+  font-size: 0.95rem;
+}
+
+/* ── Education ───────────────────────────────────────────── */
+.edu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.edu-header span {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.edu-entry p {
+  margin-top: 0.3rem;
+}
+
+/* ── Footer ──────────────────────────────────────────────── */
+footer {
+  max-width: 700px;
+  margin: 4rem auto 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* ── Mobile ──────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  html {
+    font-size: 16px;
+  }
+
+  h1 {
+    font-size: 1.65rem;
+  }
+
+  #hero {
+    margin-top: 3.5rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+  }
+
+  .skills-grid dt {
+    margin-top: 0.8rem;
+  }
+
+  .skills-grid dt:first-child {
+    margin-top: 0;
+  }
 }
