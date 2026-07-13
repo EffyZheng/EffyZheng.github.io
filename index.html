@@ -16,6 +16,9 @@
       document.documentElement.setAttribute('data-theme', t);
     })();
   </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -25,8 +28,9 @@
   <main>
 
     <section id="hero">
+      <p class="hero-cmd"><span class="prompt">effy@monash ~ $</span> whoami</p>
       <h1>Effy Zheng</h1>
-      <p class="tagline">CS student at Monash University</p>
+      <p class="tagline" id="tagline">CS student at Monash University</p>
       <nav class="social-links" aria-label="Contact and social links">
         <a href="https://github.com/EffyZheng" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a href="https://www.linkedin.com/in/wanyan-zheng" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -35,12 +39,12 @@
     </section>
 
     <section id="about">
-      <h2>About</h2>
+      <h2><span class="prompt">effy@monash ~ $</span> cat about.txt</h2>
       <p>I like sports and I like sleeping — sometimes I have to choose one, and I don't always pick the active option. I tend to get interested in a little bit of everything, and I genuinely enjoy the feeling of filling my head with new information. Just not too much at once — I have limits. CS fits that well enough: there's always something to poke at, and the rabbit holes tend to be good ones.</p>
     </section>
 
     <section id="projects">
-      <h2>Projects</h2>
+      <h2><span class="prompt">effy@monash ~ $</span> ls projects/</h2>
 
       <article class="project">
         <h3>Winter Survival — Roguelike Game <span class="lang-tag">Java</span></h3>
@@ -97,47 +101,94 @@
     </section>
 
     <section id="skills">
-      <h2>Skills</h2>
+      <h2><span class="prompt">effy@monash ~ $</span> cat skills.txt</h2>
       <dl class="skills-grid">
         <dt>Languages</dt>
-        <dd>Python (proficient), Java, Oracle SQL, HTML, R</dd>
+        <dd>
+          <div class="tag-group">
+            <span class="tag">Python (proficient)</span>
+            <span class="tag">Java</span>
+            <span class="tag">Oracle SQL</span>
+            <span class="tag">HTML</span>
+            <span class="tag">R</span>
+          </div>
+        </dd>
 
         <dt>Systems &amp; Tools</dt>
-        <dd>Assembly (MARIE), Shell, Git, GitHub, GitLab</dd>
+        <dd>
+          <div class="tag-group">
+            <span class="tag">Assembly (MARIE)</span>
+            <span class="tag">Shell</span>
+            <span class="tag">Git</span>
+            <span class="tag">GitHub</span>
+            <span class="tag">GitLab</span>
+          </div>
+        </dd>
 
         <dt>Frameworks &amp; Platforms</dt>
-        <dd>Flask, Google Gemini API, AWS</dd>
+        <dd>
+          <div class="tag-group">
+            <span class="tag">Flask</span>
+            <span class="tag">Google Gemini API</span>
+            <span class="tag">AWS</span>
+          </div>
+        </dd>
 
         <dt>Typesetting</dt>
-        <dd>Typst, Overleaf (LaTeX)</dd>
+        <dd>
+          <div class="tag-group">
+            <span class="tag">Typst</span>
+            <span class="tag">Overleaf (LaTeX)</span>
+          </div>
+        </dd>
 
         <dt>AI Tooling</dt>
-        <dd>Claude Code, Claude.ai, Gemini</dd>
+        <dd>
+          <div class="tag-group">
+            <span class="tag">Claude Code</span>
+            <span class="tag">Claude.ai</span>
+            <span class="tag">Gemini</span>
+          </div>
+        </dd>
 
         <dt>Spoken</dt>
-        <dd>Mandarin (native), English (PTE Academic 64)</dd>
+        <dd>
+          <div class="tag-group">
+            <span class="tag">Mandarin (native)</span>
+            <span class="tag">English (PTE Academic 64)</span>
+          </div>
+        </dd>
       </dl>
     </section>
 
     <section id="education">
-      <h2>Education</h2>
+      <h2><span class="prompt">effy@monash ~ $</span> cat education.txt</h2>
       <div class="edu-entry">
         <div class="edu-header">
           <strong>Monash University</strong>
           <span>2025 – present</span>
         </div>
         <p>BSc Computer Science</p>
-        <p class="text-muted">Coursework: Data Structures &amp; Algorithms, OOP Design, Database Systems (Oracle SQL), Computer Systems &amp; Network Security, Assembly (MARIE), Data Analysis &amp; Modeling, Discrete Mathematics &amp; Probability</p>
+        <p class="text-muted edu-coursework-label">Coursework</p>
+        <div class="tag-group">
+          <span class="tag">Data Structures &amp; Algorithms</span>
+          <span class="tag">OOP Design</span>
+          <span class="tag">Database Systems (Oracle SQL)</span>
+          <span class="tag">Computer Systems &amp; Network Security</span>
+          <span class="tag">Assembly (MARIE)</span>
+          <span class="tag">Data Analysis &amp; Modeling</span>
+          <span class="tag">Discrete Mathematics &amp; Probability</span>
+        </div>
       </div>
     </section>
 
     <section id="currently-learning">
-      <h2>Currently Learning</h2>
+      <h2><span class="prompt">effy@monash ~ $</span> cat learning.txt</h2>
       <p>Japanese. Still at the stage where I'm proud of myself for reading a train sign correctly.</p>
     </section>
 
     <section id="looking-ahead">
-      <h2>Looking Ahead</h2>
+      <h2><span class="prompt">effy@monash ~ $</span> cat looking-ahead.txt</h2>
       <p>I'm still figuring out where I'm heading, and I think that's okay. The plan, as much as there is one, is to keep exploring, try things that seem interesting even if they don't work out, and gradually get clearer on what I'm actually good at and what I enjoy doing. I want to be genuinely useful — to the people I work with and to whoever uses what I build. If I can find situations where everyone involved comes out better off, that sounds like the right direction to aim for.</p>
     </section>
 
