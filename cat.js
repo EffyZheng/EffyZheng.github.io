@@ -23,9 +23,8 @@
 
   // Overall scale: total cat height ≈ 22px
   const S = 0.50;
-  // Easing and arrival threshold
-  const EASE    = 0.07;
-  const ARRIVED = 22;
+  // Arrival threshold — smaller deadzone so the cat reacts to fine cursor movements
+  const ARRIVED = 10;
 
   const cat = {
     x: -80, y: -80,   // current position (centre of body)
@@ -191,8 +190,10 @@
 
     if (!reduced) {
       if (dist > ARRIVED) {
-        cat.x += dx * EASE;
-        cat.y += dy * EASE;
+        // Distance-adaptive easing: sprints when far, glides to a stop when close
+        const ease = Math.min(0.3, Math.max(0.14, 0.14 + dist / 900));
+        cat.x += dx * ease;
+        cat.y += dy * ease;
         cat.state     = 'walk';
         cat.stillFor  = 0;
         cat.sleepClock = 0;
