@@ -102,8 +102,12 @@ section {
    and covers it cleanly as the user scrolls past. Without this, Hero
    (z-index:1) bleeds through all static content until Skills appears. */
 #about             { z-index: 2; }
-/* Projects is static so its full content (5 items) scrolls naturally. */
-#projects          { position: static; }
+/* Projects: position:relative (not sticky) so all 5 items scroll naturally
+   in normal document flow. z-index:3 creates a stacking context ABOVE About
+   (z-index:2), so as Projects scrolls up it covers About — the "layer covers
+   layer" effect works without Projects ever needing to snap to top:0.
+   position:relative with no offset is layout-identical to static. */
+#projects          { position: relative; z-index: 3; }
 #skills            { z-index: 4; }
 #education         { z-index: 5; }
 #currently-learning{ z-index: 6; }
