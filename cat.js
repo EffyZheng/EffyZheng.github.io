@@ -80,7 +80,7 @@
   if (!touch) {
     canvas.style.pointerEvents = 'none';
     document.addEventListener('click', e => {
-      if (btn && (e.target === btn || btn.contains(e.target))) return;
+      if (e.target.closest('button')) return;
       const dx = e.clientX - cat.x;
       const dy = e.clientY - cat.y;
       if (Math.hypot(dx, dy) < 22) {
