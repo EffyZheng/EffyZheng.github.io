@@ -6,6 +6,7 @@
   --text-muted: #5F5E5A;
   --border: #D3D1C7;
   --accent: #0F6E56;
+  --panel-bg: #F1EFE8;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -16,6 +17,7 @@
     --text-muted: #888780;
     --border: #2E2E28;
     --accent: #5DCAA5;
+    --panel-bg: #12120F;
   }
 }
 
@@ -26,6 +28,7 @@
   --text-muted: #888780;
   --border: #2E2E28;
   --accent: #5DCAA5;
+  --panel-bg: #12120F;
 }
 
 :root[data-theme="light"] {
@@ -35,6 +38,7 @@
   --text-muted: #5F5E5A;
   --border: #D3D1C7;
   --accent: #0F6E56;
+  --panel-bg: #F1EFE8;
 }
 
 /* ── Reset ───────────────────────────────────────────────── */
@@ -45,18 +49,40 @@
 }
 
 /* ── Base ────────────────────────────────────────────────── */
-html {
-  font-size: 15px;
-}
-
 body {
   background-color: var(--bg);
   color: var(--text);
-  font-family: 'JetBrains Mono', 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   font-weight: 400;
-  line-height: 1.7;
-  padding: 2rem 1.25rem 5rem;
+  font-size: 16.5px;
+  line-height: 1.65;
+  padding-bottom: 0;
   transition: background-color 0.15s, color 0.15s;
+}
+
+/* Monospace UI layer */
+h1, h2, h3,
+#theme-toggle,
+#cat-toggle,
+.prompt,
+.hero-cmd,
+.tag,
+.lang-tag,
+.skills-grid dt,
+.edu-coursework-label,
+.tagline,
+.social-links a {
+  font-family: 'JetBrains Mono', 'Cascadia Code', 'Fira Code', monospace;
+}
+
+/* ── Topo canvas ─────────────────────────────────────────── */
+#topo-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
 }
 
 /* ── Layout ──────────────────────────────────────────────── */
@@ -65,22 +91,105 @@ main {
   margin: 0 auto;
 }
 
+/* ── Sticky section stack ────────────────────────────────── */
 section {
-  margin-top: 3.75rem;
+  position: sticky;
+  top: 0;
+}
+
+#hero              { z-index: 1; min-height: 100vh; }
+/* About must stay in the sticky stack (z-index:2) so it paints over Hero
+   and covers it cleanly as the user scrolls past. Without this, Hero
+   (z-index:1) bleeds through all static content until Skills appears. */
+#about             { z-index: 2; }
+/* Projects: position:relative (not sticky) so all 5 items scroll naturally
+   in normal document flow. z-index:3 creates a stacking context ABOVE About
+   (z-index:2), so as Projects scrolls up it covers About — the "layer covers
+   layer" effect works without Projects ever needing to snap to top:0.
+   position:relative with no offset is layout-identical to static. */
+#projects          { position: relative; z-index: 3; }
+#skills            { z-index: 4; }
+#education         { z-index: 5; }
+#currently-learning{ z-index: 6; }
+#looking-ahead     { z-index: 7; }
+
+/* ── Hero ────────────────────────────────────────────────── */
+#hero {
+  display: flex;
+  align-items: flex-start;
+}
+
+.hero-content {
+  padding: 5rem 1.25rem 4rem;
+  width: 100%;
+  opacity: var(--cover-opacity, 1);
+  transition: opacity 0.25s ease;
+}
+
+/* ── Section card panel ──────────────────────────────────── */
+/* Fully opaque — no rgba, no backdrop-filter.
+   Contour lines are visible through the side gutters (main max-width 700px).
+   Top edge dissolves into background via mask-image.
+   Covered sections fade to opacity:0 via scroll.js so no text bleeds through. */
+.section-card {
+  background: var(--panel-bg);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0px, black 48px);
+  mask-image: linear-gradient(to bottom, transparent 0px, black 48px);
+  padding: 3rem 1.25rem 4rem;
+  transform: scale(var(--cover-scale, 1));
+  opacity: var(--cover-opacity, 1);
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  will-change: transform, opacity;
+  transform-origin: center top;
+}
+
+/* ── Entrance animation ──────────────────────────────────── */
+.section-card > * {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+section.is-visible .section-card > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered 60ms delays per child */
+section.is-visible .section-card > *:nth-child(1)  { transition-delay:   0ms; }
+section.is-visible .section-card > *:nth-child(2)  { transition-delay:  60ms; }
+section.is-visible .section-card > *:nth-child(3)  { transition-delay: 120ms; }
+section.is-visible .section-card > *:nth-child(4)  { transition-delay: 180ms; }
+section.is-visible .section-card > *:nth-child(5)  { transition-delay: 240ms; }
+section.is-visible .section-card > *:nth-child(6)  { transition-delay: 300ms; }
+section.is-visible .section-card > *:nth-child(7)  { transition-delay: 360ms; }
+section.is-visible .section-card > *:nth-child(8)  { transition-delay: 420ms; }
+
+/* Reduced motion: no animation, show immediately */
+@media (prefers-reduced-motion: reduce) {
+  .section-card > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .section-card {
+    transition: none;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
 }
 
 /* ── Theme toggle ────────────────────────────────────────── */
-#theme-toggle {
+#theme-toggle,
+#cat-toggle {
   position: fixed;
   top: 1rem;
-  right: 1rem;
   background: transparent;
   border: 1px solid var(--border);
   color: var(--text-muted);
   cursor: pointer;
   border-radius: 0;
   padding: 0.3rem 0.6rem;
-  font-family: 'JetBrains Mono', monospace;
   font-size: 12px;
   font-weight: 400;
   letter-spacing: 0.04em;
@@ -88,9 +197,25 @@ section {
   transition: border-color 0.12s, color 0.12s;
 }
 
-#theme-toggle:hover {
+#theme-toggle {
+  right: 1rem;
+}
+
+#cat-toggle {
+  right: 6.5rem;
+}
+
+#theme-toggle:hover,
+#cat-toggle:hover {
   border-color: var(--accent);
   color: var(--accent);
+}
+
+/* Hide cat toggle on touch devices */
+@media (hover: none) {
+  #cat-toggle {
+    display: none;
+  }
 }
 
 /* ── Terminal prompt ─────────────────────────────────────── */
@@ -108,7 +233,7 @@ h1 {
 }
 
 h2 {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 400;
   color: var(--text);
   margin-bottom: 1.5rem;
@@ -122,6 +247,7 @@ h3 {
 
 p {
   margin-top: 0.6rem;
+  max-width: 68ch;
 }
 
 p:first-child {
@@ -147,6 +273,7 @@ li {
   margin-top: 0.3rem;
   position: relative;
   padding-left: 0.75rem;
+  max-width: 68ch;
 }
 
 li::before {
@@ -165,31 +292,7 @@ strong {
   font-size: 13px;
 }
 
-/* ── Hero ────────────────────────────────────────────────── */
-#hero {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  align-items: flex-start;
-  overflow: hidden;
-}
-
-#terrain-canvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 1;
-  padding-top: 4.5rem;
-  max-width: 700px;
-  width: 100%;
-}
-
+/* ── Hero text ───────────────────────────────────────────── */
 .hero-cmd {
   color: var(--text);
   margin-bottom: 0.6rem;
@@ -230,6 +333,50 @@ strong {
   background: var(--surface);
 }
 
+.project-header h3 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.project-meta {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 0.15rem;
+  max-width: none;
+}
+
+.project-tags {
+  margin-top: 0.6rem;
+}
+
+.project-summary {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 0.65rem;
+  max-width: 68ch;
+}
+
+.project-details {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 14.5px;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+}
+
+.project-details li {
+  max-width: 68ch;
+}
+
+.project-details strong {
+  font-weight: 500;
+  color: var(--text);
+}
+
 .lang-tag {
   font-size: 11px;
   font-weight: 400;
@@ -242,24 +389,20 @@ strong {
   white-space: nowrap;
 }
 
-.project-meta {
-  font-size: 13px;
-  color: var(--text-muted);
-  margin-top: 0.15rem;
-}
-
 .project-note {
+  font-family: 'Inter', system-ui, sans-serif;
   margin-top: 1.75rem;
   font-size: 13px;
   color: var(--text-muted);
   font-style: italic;
+  max-width: none;
 }
 
 /* ── Tags ────────────────────────────────────────────────── */
 .tag-group {
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
+  gap: 8px;
 }
 
 .tag {
@@ -267,7 +410,7 @@ strong {
   border: 0.5px solid var(--border);
   border-radius: 4px;
   padding: 3px 8px;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.5;
   color: var(--text);
   transition: border-color 0.12s;
@@ -306,6 +449,7 @@ strong {
 }
 
 .edu-header span {
+  font-family: 'Inter', system-ui, sans-serif;
   font-size: 13px;
   color: var(--text-muted);
   white-space: nowrap;
@@ -325,18 +469,21 @@ strong {
 
 /* ── Footer ──────────────────────────────────────────────── */
 footer {
+  position: relative;
+  z-index: 8;
   max-width: 700px;
-  margin: 4rem auto 0;
-  padding-top: 1.5rem;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 3rem;
   border-top: 1px solid var(--border);
   font-size: 13px;
   color: var(--text-muted);
+  background: var(--bg);
 }
 
 /* ── Mobile ──────────────────────────────────────────────── */
 @media (max-width: 480px) {
   .hero-content {
-    padding-top: 3.5rem;
+    padding-top: 4rem;
   }
 
   h1 {
