@@ -4,7 +4,6 @@
   const cards   = Array.from(document.querySelectorAll('.section-card'));
 
   // ── Entrance animation ────────────────────────────────────
-  // Each section's card children fade in + slide up 12px in staggered order
   const entryObs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
@@ -22,10 +21,9 @@
   });
 
   // ── Depth scale / opacity ─────────────────────────────────
-  // When the NEXT section's panel slides up and covers a section,
-  // that section's card slightly shrinks and fades ("retreating" effect).
-  // We track how far each section has been "scrolled into" via offsetTop,
-  // which gives the natural document position regardless of sticky.
+  // As the next section slides up over a section, that section's card
+  // shrinks slightly AND fades to fully transparent — no text bleeds through.
+  // We track offsetTop (document position, unaffected by sticky positioning).
   if (reduced) return;
 
   function update() {
@@ -36,9 +34,9 @@
       const scrolledPast = scrollY - naturalTop;
 
       if (scrolledPast > 0 && scrolledPast < section.offsetHeight) {
-        const p = Math.min(1, scrolledPast / 200);
+        const p = Math.min(1, scrolledPast / 220);
         card.style.setProperty('--cover-scale',   (1 - p * 0.02).toFixed(4));
-        card.style.setProperty('--cover-opacity', (1 - p * 0.16).toFixed(4));
+        card.style.setProperty('--cover-opacity', (1 - p).toFixed(4));
       } else {
         card.style.removeProperty('--cover-scale');
         card.style.removeProperty('--cover-opacity');
