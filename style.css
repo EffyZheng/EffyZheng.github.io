@@ -69,10 +69,6 @@ section {
   margin-top: 3.75rem;
 }
 
-#hero {
-  margin-top: 4.5rem;
-}
-
 /* ── Theme toggle ────────────────────────────────────────── */
 #theme-toggle {
   position: fixed;
@@ -170,6 +166,30 @@ strong {
 }
 
 /* ── Hero ────────────────────────────────────────────────── */
+#hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  overflow: hidden;
+}
+
+#terrain-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  padding-top: 4.5rem;
+  max-width: 700px;
+  width: 100%;
+}
+
 .hero-cmd {
   color: var(--text);
   margin-bottom: 0.6rem;
@@ -315,8 +335,8 @@ footer {
 
 /* ── Mobile ──────────────────────────────────────────────── */
 @media (max-width: 480px) {
-  #hero {
-    margin-top: 3.5rem;
+  .hero-content {
+    padding-top: 3.5rem;
   }
 
   h1 {
