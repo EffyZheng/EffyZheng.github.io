@@ -6,7 +6,7 @@
   --text-muted: #5F5E5A;
   --border: #D3D1C7;
   --accent: #0F6E56;
-  --panel-bg: rgba(241, 239, 232, 0.92);
+  --panel-bg: rgba(241, 239, 232, 0.86);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,7 +17,7 @@
     --text-muted: #888780;
     --border: #2E2E28;
     --accent: #5DCAA5;
-    --panel-bg: rgba(18, 18, 15, 0.88);
+    --panel-bg: rgba(18, 18, 15, 0.82);
   }
 }
 
@@ -28,7 +28,7 @@
   --text-muted: #888780;
   --border: #2E2E28;
   --accent: #5DCAA5;
-  --panel-bg: rgba(18, 18, 15, 0.88);
+  --panel-bg: rgba(18, 18, 15, 0.82);
 }
 
 :root[data-theme="light"] {
@@ -38,7 +38,7 @@
   --text-muted: #5F5E5A;
   --border: #D3D1C7;
   --accent: #0F6E56;
-  --panel-bg: rgba(241, 239, 232, 0.92);
+  --panel-bg: rgba(241, 239, 232, 0.86);
 }
 
 /* ── Reset ───────────────────────────────────────────────── */
@@ -49,19 +49,30 @@
 }
 
 /* ── Base ────────────────────────────────────────────────── */
-html {
-  font-size: 15px;
-}
-
 body {
   background-color: var(--bg);
   color: var(--text);
-  font-family: 'JetBrains Mono', 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+  /* Inter for all prose; monospace overridden below for UI elements */
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   font-weight: 400;
-  line-height: 1.7;
-  /* No side padding on body — handled per-section inside panels and hero */
+  font-size: 16.5px;
+  line-height: 1.65;
   padding-bottom: 0;
   transition: background-color 0.15s, color 0.15s;
+}
+
+/* Monospace UI layer — headings, prompts, tags, labels stay in JetBrains Mono */
+h1, h2, h3,
+#theme-toggle,
+.prompt,
+.hero-cmd,
+.tag,
+.lang-tag,
+.skills-grid dt,
+.edu-coursework-label,
+.tagline,
+.social-links a {
+  font-family: 'JetBrains Mono', 'Cascadia Code', 'Fira Code', monospace;
 }
 
 /* ── Topo canvas ─────────────────────────────────────────── */
@@ -81,8 +92,6 @@ main {
 }
 
 /* ── Sticky section stack ────────────────────────────────── */
-/* All sections pin at top:0; later ones slide up and cover earlier ones. */
-/* Z-index order matches DOM order so next section covers the previous. */
 section {
   position: sticky;
   top: 0;
@@ -97,7 +106,6 @@ section {
 #looking-ahead     { z-index: 7; }
 
 /* ── Hero ────────────────────────────────────────────────── */
-/* No background panel — topo shows through */
 #hero {
   display: flex;
   align-items: flex-start;
@@ -111,10 +119,12 @@ section {
 /* ── Section card panel ──────────────────────────────────── */
 .section-card {
   background: var(--panel-bg);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  /* Soft top edge — topo bleeds through before the panel solidifies */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0px, black 48px);
+  mask-image: linear-gradient(to bottom, transparent 0px, black 48px);
   padding: 3rem 1.25rem 4rem;
-  /* Depth scale/opacity driven by scroll.js via CSS custom props */
   transform: scale(var(--cover-scale, 1));
   opacity: var(--cover-opacity, 1);
   transition: transform 0.25s ease, opacity 0.25s ease;
@@ -123,7 +133,6 @@ section {
 }
 
 /* ── Entrance animation ──────────────────────────────────── */
-/* Elements start invisible/offset; scroll.js adds .is-visible to trigger */
 .section-card > * {
   opacity: 0;
   transform: translateY(12px);
@@ -154,6 +163,8 @@ section.is-visible .section-card > *:nth-child(8)  { transition-delay: 420ms; }
   }
   .section-card {
     transition: none;
+    -webkit-mask-image: none;
+    mask-image: none;
   }
 }
 
@@ -168,7 +179,6 @@ section.is-visible .section-card > *:nth-child(8)  { transition-delay: 420ms; }
   cursor: pointer;
   border-radius: 0;
   padding: 0.3rem 0.6rem;
-  font-family: 'JetBrains Mono', monospace;
   font-size: 12px;
   font-weight: 400;
   letter-spacing: 0.04em;
@@ -196,7 +206,7 @@ h1 {
 }
 
 h2 {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 400;
   color: var(--text);
   margin-bottom: 1.5rem;
@@ -210,6 +220,7 @@ h3 {
 
 p {
   margin-top: 0.6rem;
+  max-width: 68ch;
 }
 
 p:first-child {
@@ -235,6 +246,7 @@ li {
   margin-top: 0.3rem;
   position: relative;
   padding-left: 0.75rem;
+  max-width: 68ch;
 }
 
 li::before {
@@ -294,6 +306,54 @@ strong {
   background: var(--surface);
 }
 
+/* Layer 1 — title + meta */
+.project-header h3 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.project-meta {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 0.15rem;
+  max-width: none;
+}
+
+/* Layer 2 — tech tags */
+.project-tags {
+  margin-top: 0.6rem;
+}
+
+/* Layer 3 — one-sentence summary */
+.project-summary {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 0.65rem;
+  max-width: 68ch;
+}
+
+/* Layer 4 — bullet details */
+.project-details {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 14.5px;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+}
+
+.project-details li {
+  max-width: 68ch;
+}
+
+.project-details strong {
+  font-weight: 500;
+  color: var(--text);
+}
+
 .lang-tag {
   font-size: 11px;
   font-weight: 400;
@@ -306,24 +366,20 @@ strong {
   white-space: nowrap;
 }
 
-.project-meta {
-  font-size: 13px;
-  color: var(--text-muted);
-  margin-top: 0.15rem;
-}
-
 .project-note {
+  font-family: 'Inter', system-ui, sans-serif;
   margin-top: 1.75rem;
   font-size: 13px;
   color: var(--text-muted);
   font-style: italic;
+  max-width: none;
 }
 
 /* ── Tags ────────────────────────────────────────────────── */
 .tag-group {
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
+  gap: 8px;
 }
 
 .tag {
@@ -331,7 +387,7 @@ strong {
   border: 0.5px solid var(--border);
   border-radius: 4px;
   padding: 3px 8px;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.5;
   color: var(--text);
   transition: border-color 0.12s;
@@ -370,6 +426,7 @@ strong {
 }
 
 .edu-header span {
+  font-family: 'Inter', system-ui, sans-serif;
   font-size: 13px;
   color: var(--text-muted);
   white-space: nowrap;

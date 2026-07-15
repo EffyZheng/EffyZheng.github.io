@@ -18,22 +18,19 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Inter for body text + JetBrains Mono for UI/code elements -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Full-bleed topographic background — fixed, behind everything -->
   <canvas id="topo-canvas" aria-hidden="true"></canvas>
-
-  <!-- Mouse-following cat — fixed overlay, pointer-events: none -->
   <canvas id="cat-canvas" aria-hidden="true"></canvas>
 
   <button id="theme-toggle" aria-label="Toggle colour scheme"></button>
 
   <main>
 
-    <!-- Hero: sticky, no panel — topo background shows through -->
     <section id="hero">
       <div class="hero-content">
         <p class="hero-cmd"><span class="prompt">effy@monash ~ $</span> whoami</p>
@@ -47,8 +44,6 @@
       </div>
     </section>
 
-    <!-- Content sections: sticky cards that slide up and stack -->
-
     <section id="about">
       <div class="section-card">
         <h2><span class="prompt">effy@monash ~ $</span> cat about.txt</h2>
@@ -61,53 +56,98 @@
         <h2><span class="prompt">effy@monash ~ $</span> ls projects/</h2>
 
         <article class="project">
-          <h3>Winter Survival — Roguelike Game <span class="lang-tag">Java</span></h3>
-          <p class="project-meta">Course project · OOP Design · Aug – Nov 2025</p>
-          <ul>
+          <div class="project-header">
+            <h3>Winter Survival — Roguelike Game</h3>
+            <p class="project-meta">Course project · OOP Design · Aug – Nov 2025</p>
+          </div>
+          <div class="project-tags tag-group">
+            <span class="tag">Java</span>
+            <span class="tag">Google Gemini API</span>
+            <span class="tag">Strategy Pattern</span>
+            <span class="tag">OOP</span>
+          </div>
+          <p class="project-summary">Built a Java roguelike where NPCs powered by the Gemini API set their own prices and generate their own dialogue — and the game stays playable even when the network goes down.</p>
+          <ul class="project-details">
             <li>Extended and refactored an existing Java game engine following OO design principles</li>
-            <li>Used the strategy pattern for multi-type NPC behaviour to keep modules decoupled</li>
-            <li>Integrated the Google Gemini API to build autonomous NPCs with dynamic pricing and non-deterministic dialogue, behind an extensible agent abstraction layer</li>
+            <li>Used the <strong>strategy pattern</strong> for multi-type NPC behaviour to keep modules decoupled</li>
+            <li>Integrated the <strong>Google Gemini API</strong> to build autonomous NPCs with dynamic pricing and non-deterministic dialogue, behind an extensible agent abstraction layer</li>
             <li>Added exception handling for the external API so the game degrades gracefully when the network fails</li>
           </ul>
         </article>
 
         <article class="project">
-          <h3>Cryptocurrency Trading System <span class="lang-tag">Python</span></h3>
-          <p class="project-meta">Course project · Data Structures &amp; Algorithms · Sep – Oct 2025</p>
-          <ul>
-            <li>Built a trading engine on hash tables, linked lists, and custom iterators</li>
-            <li>Timestamp-based ordering and signing to guarantee transaction uniqueness</li>
-            <li>Recursive hash ledger with collision detection and automatic merging</li>
+          <div class="project-header">
+            <h3>Cryptocurrency Trading System</h3>
+            <p class="project-meta">Course project · Data Structures &amp; Algorithms · Sep – Oct 2025</p>
+          </div>
+          <div class="project-tags tag-group">
+            <span class="tag">Python</span>
+            <span class="tag">Hash Tables</span>
+            <span class="tag">Linked Lists</span>
+            <span class="tag">Custom Iterators</span>
+          </div>
+          <p class="project-summary">Implemented the full trading engine from scratch — hash tables, linked lists, and custom iterators — without reaching for any standard library collections.</p>
+          <ul class="project-details">
+            <li>Built a trading engine on <strong>hash tables</strong>, <strong>linked lists</strong>, and <strong>custom iterators</strong></li>
+            <li><strong>Timestamp-based</strong> ordering and signing to guarantee transaction uniqueness</li>
+            <li>Recursive <strong>hash ledger</strong> with collision detection and automatic merging</li>
           </ul>
         </article>
 
         <article class="project">
-          <h3>Social Network Platform <span class="lang-tag">Python / Flask</span></h3>
-          <p class="project-meta">Course project · OOP Design · Aug – Sep 2025</p>
-          <ul>
-            <li>Full system: user management, posting, session navigation, and social graph analysis</li>
+          <div class="project-header">
+            <h3>Social Network Platform</h3>
+            <p class="project-meta">Course project · OOP Design · Aug – Sep 2025</p>
+          </div>
+          <div class="project-tags tag-group">
+            <span class="tag">Python</span>
+            <span class="tag">Flask</span>
+            <span class="tag">OOP</span>
+            <span class="tag">Graph Analysis</span>
+          </div>
+          <p class="project-summary">A complete social platform with asymmetric follow relationships, mutual-friend detection, and graph-based cluster identification built on top of full user and content management.</p>
+          <ul class="project-details">
+            <li>Full system: user management, posting, session navigation, and <strong>social graph analysis</strong></li>
             <li>Image processing (flip / colour filters), password history, and feed merging</li>
-            <li>Asymmetric follow relationships with mutual-friend detection and cluster identification</li>
+            <li>Asymmetric follow relationships with <strong>mutual-friend detection</strong> and cluster identification</li>
           </ul>
         </article>
 
         <article class="project">
-          <h3>AI Fake Review Detection <span class="lang-tag">Hackathon</span></h3>
-          <p class="project-meta">Team · 48h Hackathon · Sep 2025</p>
-          <ul>
+          <div class="project-header">
+            <h3>AI Fake Review Detection</h3>
+            <p class="project-meta">Team · 48h Hackathon · Sep 2025</p>
+          </div>
+          <div class="project-tags tag-group">
+            <span class="tag">Frontend</span>
+            <span class="tag">AWS</span>
+            <span class="tag">Flask</span>
+            <span class="tag">48h Hackathon</span>
+          </div>
+          <p class="project-summary">Zero to working demo in 48 hours: built the frontend, set up the environment, got AWS configured, and picked up Flask endpoint integration mid-sprint.</p>
+          <ul class="project-details">
             <li>Built the frontend and local environment under a 48-hour deadline</li>
-            <li>Configured AWS and got a working service demo running</li>
-            <li>Contributed to backend API work — learned Flask endpoint integration on the spot</li>
+            <li>Configured <strong>AWS</strong> and got a working service demo running</li>
+            <li>Contributed to backend API work — learned <strong>Flask endpoint integration</strong> on the spot</li>
           </ul>
         </article>
 
         <article class="project">
-          <h3>AVSCP — AI Compliance &amp; Safety Platform <span class="lang-tag">Design</span></h3>
-          <p class="project-meta">Course project · IT Ethics &amp; Professional Practice · Team of 6 · Figma · Mar – Jun 2025</p>
-          <ul>
-            <li>Translated an AI ethics framework into system requirements across privacy, transparency, regulatory compliance, and accountability</li>
-            <li>Designed a data-safety module using federated learning and differential privacy, with automated anonymisation rules</li>
-            <li>Built the full interactive prototype in Figma and presented the demo</li>
+          <div class="project-header">
+            <h3>AVSCP — AI Compliance &amp; Safety Platform</h3>
+            <p class="project-meta">Course project · IT Ethics &amp; Professional Practice · Team of 6 · Figma · Mar – Jun 2025</p>
+          </div>
+          <div class="project-tags tag-group">
+            <span class="tag">Figma</span>
+            <span class="tag">AI Ethics</span>
+            <span class="tag">System Design</span>
+            <span class="tag">Federated Learning</span>
+          </div>
+          <p class="project-summary">Translated a high-level AI ethics framework into concrete, auditable system requirements — then prototyped the full platform in Figma with a working demo.</p>
+          <ul class="project-details">
+            <li>Translated an <strong>AI ethics framework</strong> into system requirements across privacy, transparency, regulatory compliance, and accountability</li>
+            <li>Designed a data-safety module using <strong>federated learning</strong> and <strong>differential privacy</strong>, with automated anonymisation rules</li>
+            <li>Built the full interactive prototype in <strong>Figma</strong> and presented the demo</li>
           </ul>
         </article>
 

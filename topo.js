@@ -59,6 +59,7 @@
   function draw(dt) {
     if (!reduced) time += dt;
     const th = theme();
+    const scrollPhase = window.scrollY * 0.002;
 
     ctx.fillStyle = th.bg;
     ctx.fillRect(0, 0, W, H);
@@ -84,6 +85,9 @@
       const px = touch ? 0 : mouseX * t * 20;
       const py = touch ? 0 : mouseY * t * 10;
 
+      // Scroll-driven phase offset: lower lines shift more as you scroll
+      const sp = scrollPhase * (0.5 + t * 0.5);
+
       ctx.beginPath();
       ctx.strokeStyle = th.line;
       ctx.globalAlpha = opacity;
@@ -96,7 +100,7 @@
         const x  = xn * W + px;
         let   y  = baseY + py;
         for (let k = 0; k < 3; k++) {
-          y += Math.sin(xn * Math.PI * 2 * terms[k].freq + terms[k].phase + time * drift) * amps[k];
+          y += Math.sin(xn * Math.PI * 2 * terms[k].freq + terms[k].phase + sp + time * drift) * amps[k];
         }
         s === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
       }
