@@ -30,23 +30,28 @@
   let following = !touch && localStorage.getItem('catFollow') === 'true';
 
   const btn = document.getElementById('cat-toggle');
+
   function syncBtn() {
     if (!btn) return;
     btn.textContent = following ? '[ cat ✦ ]' : '[ cat ]';
   }
+
+  // Single entry point for toggling — both the button and the cat-body click
+  // call this, never toggling directly, so they can never cancel each other.
+  function setFollow(on) {
+    following = on;
+    localStorage.setItem('catFollow', following);
+    syncBtn();
+    if (following) {
+      cat.state  = 'walk';
+      cat.stillFor   = 0;
+      cat.sleepClock = 0;
+      rideState = 'none';
+    }
+  }
+
   if (btn) {
-    btn.addEventListener('click', () => {
-      following = !following;
-      localStorage.setItem('catFollow', following);
-      syncBtn();
-      if (following) {
-        // Wake up immediately to follow
-        cat.state = 'walk';
-        cat.stillFor = 0;
-        cat.sleepClock = 0;
-        rideState = 'none';
-      }
-    });
+    btn.addEventListener('click', () => setFollow(!following));
     syncBtn();
   }
 
@@ -69,23 +74,17 @@
     mouseY = e.clientY;
   });
 
-  // ── Click on cat canvas to toggle follow ─────────────────
+  // ── Click on cat body to toggle follow ───────────────────
+  // Separate handler from the button — bail out if the click came from the
+  // button so both handlers can't fire on the same click and cancel each other.
   if (!touch) {
     canvas.style.pointerEvents = 'none';
-    // Use document click, check if cursor was near cat
     document.addEventListener('click', e => {
+      if (btn && (e.target === btn || btn.contains(e.target))) return;
       const dx = e.clientX - cat.x;
       const dy = e.clientY - cat.y;
       if (Math.hypot(dx, dy) < 22) {
-        following = !following;
-        localStorage.setItem('catFollow', following);
-        syncBtn();
-        if (following) {
-          cat.state = 'walk';
-          cat.stillFor = 0;
-          cat.sleepClock = 0;
-          rideState = 'none';
-        }
+        setFollow(!following);
       }
     });
   }
