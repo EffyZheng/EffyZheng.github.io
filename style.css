@@ -98,10 +98,16 @@ section {
 }
 
 #hero              { z-index: 1; min-height: 100vh; }
-/* About and Projects are both static so the long content area scrolls
-   continuously without any sticky element crossing into it from above. */
-#about             { position: static; }
-#projects          { position: static; }
+/* About must stay in the sticky stack (z-index:2) so it paints over Hero
+   and covers it cleanly as the user scrolls past. Without this, Hero
+   (z-index:1) bleeds through all static content until Skills appears. */
+#about             { z-index: 2; }
+/* Projects: position:relative (not sticky) so all 5 items scroll naturally
+   in normal document flow. z-index:3 creates a stacking context ABOVE About
+   (z-index:2), so as Projects scrolls up it covers About — the "layer covers
+   layer" effect works without Projects ever needing to snap to top:0.
+   position:relative with no offset is layout-identical to static. */
+#projects          { position: relative; z-index: 3; }
 #skills            { z-index: 4; }
 #education         { z-index: 5; }
 #currently-learning{ z-index: 6; }
@@ -116,6 +122,8 @@ section {
 .hero-content {
   padding: 5rem 1.25rem 4rem;
   width: 100%;
+  opacity: var(--cover-opacity, 1);
+  transition: opacity 0.25s ease;
 }
 
 /* ── Section card panel ──────────────────────────────────── */
