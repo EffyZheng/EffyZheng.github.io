@@ -98,9 +98,9 @@ section {
 }
 
 #hero              { z-index: 1; min-height: 100vh; }
-#about             { z-index: 2; }
-/* Projects has many items and must show all of them — taken out of the
-   sticky stack so its card scrolls naturally and nothing gets clipped. */
+/* About and Projects are both static so the long content area scrolls
+   continuously without any sticky element crossing into it from above. */
+#about             { position: static; }
 #projects          { position: static; }
 #skills            { z-index: 4; }
 #education         { z-index: 5; }
