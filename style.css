@@ -6,7 +6,7 @@
   --text-muted: #5F5E5A;
   --border: #D3D1C7;
   --accent: #0F6E56;
-  --panel-bg: rgba(241, 239, 232, 0.86);
+  --panel-bg: #F1EFE8;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,7 +17,7 @@
     --text-muted: #888780;
     --border: #2E2E28;
     --accent: #5DCAA5;
-    --panel-bg: rgba(18, 18, 15, 0.82);
+    --panel-bg: #12120F;
   }
 }
 
@@ -28,7 +28,7 @@
   --text-muted: #888780;
   --border: #2E2E28;
   --accent: #5DCAA5;
-  --panel-bg: rgba(18, 18, 15, 0.82);
+  --panel-bg: #12120F;
 }
 
 :root[data-theme="light"] {
@@ -38,7 +38,7 @@
   --text-muted: #5F5E5A;
   --border: #D3D1C7;
   --accent: #0F6E56;
-  --panel-bg: rgba(241, 239, 232, 0.86);
+  --panel-bg: #F1EFE8;
 }
 
 /* ── Reset ───────────────────────────────────────────────── */
@@ -52,7 +52,6 @@
 body {
   background-color: var(--bg);
   color: var(--text);
-  /* Inter for all prose; monospace overridden below for UI elements */
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   font-weight: 400;
   font-size: 16.5px;
@@ -61,9 +60,10 @@ body {
   transition: background-color 0.15s, color 0.15s;
 }
 
-/* Monospace UI layer — headings, prompts, tags, labels stay in JetBrains Mono */
+/* Monospace UI layer */
 h1, h2, h3,
 #theme-toggle,
+#cat-toggle,
 .prompt,
 .hero-cmd,
 .tag,
@@ -117,11 +117,12 @@ section {
 }
 
 /* ── Section card panel ──────────────────────────────────── */
+/* Fully opaque — no rgba, no backdrop-filter.
+   Contour lines are visible through the side gutters (main max-width 700px).
+   Top edge dissolves into background via mask-image.
+   Covered sections fade to opacity:0 via scroll.js so no text bleeds through. */
 .section-card {
   background: var(--panel-bg);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  /* Soft top edge — topo bleeds through before the panel solidifies */
   -webkit-mask-image: linear-gradient(to bottom, transparent 0px, black 48px);
   mask-image: linear-gradient(to bottom, transparent 0px, black 48px);
   padding: 3rem 1.25rem 4rem;
@@ -169,10 +170,10 @@ section.is-visible .section-card > *:nth-child(8)  { transition-delay: 420ms; }
 }
 
 /* ── Theme toggle ────────────────────────────────────────── */
-#theme-toggle {
+#theme-toggle,
+#cat-toggle {
   position: fixed;
   top: 1rem;
-  right: 1rem;
   background: transparent;
   border: 1px solid var(--border);
   color: var(--text-muted);
@@ -186,9 +187,25 @@ section.is-visible .section-card > *:nth-child(8)  { transition-delay: 420ms; }
   transition: border-color 0.12s, color 0.12s;
 }
 
-#theme-toggle:hover {
+#theme-toggle {
+  right: 1rem;
+}
+
+#cat-toggle {
+  right: 6.5rem;
+}
+
+#theme-toggle:hover,
+#cat-toggle:hover {
   border-color: var(--accent);
   color: var(--accent);
+}
+
+/* Hide cat toggle on touch devices */
+@media (hover: none) {
+  #cat-toggle {
+    display: none;
+  }
 }
 
 /* ── Terminal prompt ─────────────────────────────────────── */
@@ -306,7 +323,6 @@ strong {
   background: var(--surface);
 }
 
-/* Layer 1 — title + meta */
 .project-header h3 {
   font-family: 'JetBrains Mono', monospace;
   font-size: 14px;
@@ -322,12 +338,10 @@ strong {
   max-width: none;
 }
 
-/* Layer 2 — tech tags */
 .project-tags {
   margin-top: 0.6rem;
 }
 
-/* Layer 3 — one-sentence summary */
 .project-summary {
   font-family: 'Inter', system-ui, sans-serif;
   font-weight: 500;
@@ -337,7 +351,6 @@ strong {
   max-width: 68ch;
 }
 
-/* Layer 4 — bullet details */
 .project-details {
   font-family: 'Inter', system-ui, sans-serif;
   font-size: 14.5px;

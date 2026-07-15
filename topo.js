@@ -56,6 +56,22 @@
     if (!paused && !rafId) rafId = requestAnimationFrame(frame);
   });
 
+  // Expose bottom contour Y for cat.js ride positioning
+  window.__topoBottomY = function (screenX) {
+    const last = lines[N - 1];
+    const sp   = window.scrollY * 0.002 * (0.5 + 1 * 0.5);
+    const px   = touch ? 0 : mouseX * 1 * 20;
+    const py   = touch ? 0 : mouseY * 1 * 10;
+    const amps = [H * (0.022 + 0.042), H * (0.011 + 0.026), H * (0.004 + 0.011)];
+    const baseY = H * (0.05 + 0.90);
+    const xn = Math.max(0, Math.min(1, (screenX - px) / W));
+    let y = baseY + py;
+    for (let k = 0; k < 3; k++) {
+      y += Math.sin(xn * Math.PI * 2 * last.terms[k].freq + last.terms[k].phase + sp + time * last.drift) * amps[k];
+    }
+    return y;
+  };
+
   function draw(dt) {
     if (!reduced) time += dt;
     const th = theme();
