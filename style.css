@@ -98,9 +98,11 @@ section {
 }
 
 #hero              { z-index: 1; min-height: 100vh; }
-/* About and Projects are both static so the long content area scrolls
-   continuously without any sticky element crossing into it from above. */
-#about             { position: static; }
+/* About must stay in the sticky stack (z-index:2) so it paints over Hero
+   and covers it cleanly as the user scrolls past. Without this, Hero
+   (z-index:1) bleeds through all static content until Skills appears. */
+#about             { z-index: 2; }
+/* Projects is static so its full content (5 items) scrolls naturally. */
 #projects          { position: static; }
 #skills            { z-index: 4; }
 #education         { z-index: 5; }
@@ -116,6 +118,8 @@ section {
 .hero-content {
   padding: 5rem 1.25rem 4rem;
   width: 100%;
+  opacity: var(--cover-opacity, 1);
+  transition: opacity 0.25s ease;
 }
 
 /* ── Section card panel ──────────────────────────────────── */
