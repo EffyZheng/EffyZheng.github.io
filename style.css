@@ -99,7 +99,9 @@ section {
 
 #hero              { z-index: 1; min-height: 100vh; }
 #about             { z-index: 2; }
-#projects          { z-index: 3; }
+/* Projects has many items and must show all of them — taken out of the
+   sticky stack so its card scrolls naturally and nothing gets clipped. */
+#projects          { position: static; }
 #skills            { z-index: 4; }
 #education         { z-index: 5; }
 #currently-learning{ z-index: 6; }
