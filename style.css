@@ -305,6 +305,12 @@ strong {
   font-size: 15px;
 }
 
+.availability {
+  color: var(--accent);
+  margin-top: 0.7rem;
+  font-size: 14px;
+}
+
 .social-links {
   display: flex;
   gap: 1.5rem;
