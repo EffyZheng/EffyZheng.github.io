@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Effy Zheng</title>
-  <meta name="description" content="Effy Zheng — CS student at Monash University.">
+  <meta name="description" content="Effy Zheng — Computer Science student building and testing AI-enabled software. Available for internships from 26 November 2026.">
   <meta property="og:title" content="Effy Zheng">
-  <meta property="og:description" content="CS student at Monash University.">
+  <meta property="og:description" content="Computer Science student building and testing AI-enabled software. Available from 26 November 2026.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://effyzheng.github.io/">
   <script>
@@ -23,8 +23,6 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <canvas id="cat-canvas" aria-hidden="true"></canvas>
-
   <canvas id="topo-canvas" aria-hidden="true"></canvas>
   <canvas id="cat-canvas" aria-hidden="true"></canvas>
 
@@ -37,7 +35,8 @@
       <div class="hero-content">
         <p class="hero-cmd"><span class="prompt">effy@monash ~ $</span> whoami</p>
         <h1>Effy Zheng</h1>
-        <p class="tagline" id="tagline">CS student at Monash University</p>
+        <p class="tagline" id="tagline">Computer Science student · AI applications &amp; software engineering</p>
+        <p class="availability">Available for internships from 26 November 2026</p>
         <nav class="social-links" aria-label="Contact and social links">
           <a href="https://github.com/EffyZheng" target="_blank" rel="noopener noreferrer">GitHub</a>
           <a href="https://www.linkedin.com/in/wanyan-zheng" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -49,7 +48,8 @@
     <section id="about">
       <div class="section-card">
         <h2><span class="prompt">effy@monash ~ $</span> cat about.txt</h2>
-        <p>I like sports and I like sleeping — sometimes I have to choose one, and I don't always pick the active option. I tend to get interested in a little bit of everything, and I genuinely enjoy the feeling of filling my head with new information. Just not too much at once — I have limits. CS fits that well enough: there's always something to poke at, and the rabbit holes tend to be good ones.</p>
+        <p>I'm a Computer Science student at Monash University Malaysia. I enjoy getting up to speed on unfamiliar tools, narrowing an open-ended problem into something testable, and checking whether the result actually works. My recent coursework covers AI reasoning and search, a Haskell constraint tool with a browser interface, and Python developer tooling.</p>
+        <p>I'm looking for an internship in AI application engineering, forward deployed engineering, or software engineering where I can help build prototypes, test integrations, investigate failures, and document what I learn. I use AI coding tools, then review their output and test it against concrete cases.</p>
       </div>
     </section>
 
@@ -59,101 +59,80 @@
 
         <article class="project">
           <div class="project-header">
-            <h3>Winter Survival — Roguelike Game</h3>
-            <p class="project-meta">Course project · OOP Design · Aug – Nov 2025</p>
+            <h3>Bayesian Network for Diagnostic Reasoning</h3>
+            <p class="project-meta">FIT3080 Artificial Intelligence · Course project · 2026</p>
           </div>
           <div class="project-tags tag-group">
-            <span class="tag">Java</span>
-            <span class="tag">Google Gemini API</span>
-            <span class="tag">Strategy Pattern</span>
-            <span class="tag">OOP</span>
+            <span class="tag">Netica</span><span class="tag">Bayesian networks</span><span class="tag">Model evaluation</span>
           </div>
-          <p class="project-summary">Built a Java roguelike where NPCs powered by the Gemini API set their own prices and generate their own dialogue — and the game stays playable even when the network goes down.</p>
+          <p class="project-summary">Modelled pneumonia reasoning from risk factors, symptoms, and diagnostic tests, then compared predictions with two simpler baselines.</p>
           <ul class="project-details">
-            <li>Extended and refactored an existing Java game engine following OO design principles</li>
-            <li>Used the <strong>strategy pattern</strong> for multi-type NPC behaviour to keep modules decoupled</li>
-            <li>Integrated the <strong>Google Gemini API</strong> to build autonomous NPCs with dynamic pricing and non-deterministic dialogue, behind an extensible agent abstraction layer</li>
-            <li>Added exception handling for the external API so the game degrades gracefully when the network fails</li>
+            <li>Built and parameterised the course network and checked it on supplied cases.</li>
+            <li>Recorded a limitation: the model recognised the no-pneumonia class weakly.</li>
           </ul>
         </article>
 
         <article class="project">
           <div class="project-header">
-            <h3>Cryptocurrency Trading System</h3>
-            <p class="project-meta">Course project · Data Structures &amp; Algorithms · Sep – Oct 2025</p>
+            <h3>MiniZinc-Lite Constraint Tool</h3>
+            <p class="project-meta">FIT2102 Programming Paradigms · Course project · 2026</p>
           </div>
           <div class="project-tags tag-group">
-            <span class="tag">Python</span>
-            <span class="tag">Hash Tables</span>
-            <span class="tag">Linked Lists</span>
-            <span class="tag">Custom Iterators</span>
+            <span class="tag">Haskell</span><span class="tag">TypeScript</span><span class="tag">RxJS</span><span class="tag">HTTP</span>
           </div>
-          <p class="project-summary">Implemented the full trading engine from scratch — hash tables, linked lists, and custom iterators — without reaching for any standard library collections.</p>
+          <p class="project-summary">Built a parser and backtracking solver for a supported constraint language, then connected it to a browser interface.</p>
           <ul class="project-details">
-            <li>Built a trading engine on <strong>hash tables</strong>, <strong>linked lists</strong>, and <strong>custom iterators</strong></li>
-            <li><strong>Timestamp-based</strong> ordering and signing to guarantee transaction uniqueness</li>
-            <li>Recursive <strong>hash ledger</strong> with collision detection and automatic merging</li>
+            <li>Validated declarations and references and pruned assignments when constraints failed.</li>
+            <li>Connected the Haskell HTTP service to Run and Save controls; tested models and syntax errors.</li>
           </ul>
         </article>
 
         <article class="project">
           <div class="project-header">
-            <h3>Social Network Platform</h3>
-            <p class="project-meta">Course project · OOP Design · Aug – Sep 2025</p>
+            <h3>Git Repository Inspector</h3>
+            <p class="project-meta">FIT2109 Computer Science Workshop · Course project · 2026</p>
           </div>
           <div class="project-tags tag-group">
-            <span class="tag">Python</span>
-            <span class="tag">Flask</span>
-            <span class="tag">OOP</span>
-            <span class="tag">Graph Analysis</span>
+            <span class="tag">Python</span><span class="tag">Git</span><span class="tag">pytest</span><span class="tag">CLI</span>
           </div>
-          <p class="project-summary">A complete social platform with asymmetric follow relationships, mutual-friend detection, and graph-based cluster identification built on top of full user and content management.</p>
+          <p class="project-summary">Extended a course-provided command-line tool to inspect Git history and working-tree status.</p>
           <ul class="project-details">
-            <li>Full system: user management, posting, session navigation, and <strong>social graph analysis</strong></li>
-            <li>Image processing (flip / colour filters), password history, and feed merging</li>
-            <li>Asymmetric follow relationships with <strong>mutual-friend detection</strong> and cluster identification</li>
+            <li>Fixed staged and unstaged status parsing and case-insensitive searches.</li>
+            <li>Checked behaviour with pytest and documented clean setup and reproduction steps.</li>
           </ul>
         </article>
 
         <article class="project">
           <div class="project-header">
-            <h3>AI Fake Review Detection</h3>
-            <p class="project-meta">Team · 48h Hackathon · Sep 2025</p>
+            <h3>Pacman AI Agents</h3>
+            <p class="project-meta">FIT3080 Artificial Intelligence · Course projects · 2026</p>
           </div>
           <div class="project-tags tag-group">
-            <span class="tag">Frontend</span>
-            <span class="tag">AWS</span>
-            <span class="tag">Flask</span>
-            <span class="tag">48h Hackathon</span>
+            <span class="tag">Python</span><span class="tag">A* search</span><span class="tag">Value iteration</span><span class="tag">Q-learning</span>
           </div>
-          <p class="project-summary">Zero to working demo in 48 hours: built the frontend, set up the environment, got AWS configured, and picked up Flask endpoint integration mid-sprint.</p>
+          <p class="project-summary">Worked through search and reinforcement-learning agents and compared approaches under course test and runtime constraints.</p>
           <ul class="project-details">
-            <li>Built the frontend and local environment under a 48-hour deadline</li>
-            <li>Configured <strong>AWS</strong> and got a working service demo running</li>
-            <li>Contributed to backend API work — learned <strong>Flask endpoint integration</strong> on the spot</li>
+            <li>Built A* and multi-food planning agents and compared candidate routes.</li>
+            <li>Built value-iteration and Q-learning agents; compared parameters and test results.</li>
           </ul>
         </article>
 
         <article class="project">
           <div class="project-header">
-            <h3>AVSCP — AI Compliance &amp; Safety Platform</h3>
-            <p class="project-meta">Course project · IT Ethics &amp; Professional Practice · Team of 6 · Figma · Mar – Jun 2025</p>
+            <h3>Winter Survival Roguelike</h3>
+            <p class="project-meta">Object-Oriented Design · Course project · 2025</p>
           </div>
           <div class="project-tags tag-group">
-            <span class="tag">Figma</span>
-            <span class="tag">AI Ethics</span>
-            <span class="tag">System Design</span>
-            <span class="tag">Federated Learning</span>
+            <span class="tag">Java</span><span class="tag">Gemini API</span><span class="tag">Error handling</span>
           </div>
-          <p class="project-summary">Translated a high-level AI ethics framework into concrete, auditable system requirements — then prototyped the full platform in Figma with a working demo.</p>
+          <p class="project-summary">Extended an existing Java game with NPC behaviour and Gemini-powered dialogue, with fallback behaviour when the API was unavailable.</p>
           <ul class="project-details">
-            <li>Translated an <strong>AI ethics framework</strong> into system requirements across privacy, transparency, regulatory compliance, and accountability</li>
-            <li>Designed a data-safety module using <strong>federated learning</strong> and <strong>differential privacy</strong>, with automated anonymisation rules</li>
-            <li>Built the full interactive prototype in <strong>Figma</strong> and presented the demo</li>
+            <li>Worked within a course-provided engine and used a strategy pattern for different NPC behaviours.</li>
+            <li>Handled external API failures so the core game could continue.</li>
           </ul>
         </article>
 
-        <p class="project-note">Source for coursework projects is kept private under university policy — happy to walk through any of them.</p>
+        <p class="project-note">Coursework source is private under university policy. I can explain the approach, tests, and limitations in an interview. This site itself is <a href="https://github.com/EffyZheng/EffyZheng.github.io" target="_blank" rel="noopener noreferrer">public on GitHub</a>.</p>
       </div>
     </section>
 
@@ -164,39 +143,21 @@
           <dt>Languages</dt>
           <dd>
             <div class="tag-group">
-              <span class="tag">Python (proficient)</span>
-              <span class="tag">Java</span>
-              <span class="tag">Oracle SQL</span>
-              <span class="tag">HTML</span>
-              <span class="tag">R</span>
+              <span class="tag">Python</span><span class="tag">Haskell</span><span class="tag">TypeScript</span><span class="tag">Java</span><span class="tag">HTML/CSS/JavaScript</span>
             </div>
           </dd>
 
           <dt>Systems &amp; Tools</dt>
           <dd>
             <div class="tag-group">
-              <span class="tag">Assembly (MARIE)</span>
-              <span class="tag">Shell</span>
-              <span class="tag">Git</span>
-              <span class="tag">GitHub</span>
-              <span class="tag">GitLab</span>
+              <span class="tag">Git</span><span class="tag">Linux command line</span><span class="tag">Bash</span><span class="tag">pytest</span><span class="tag">Vitest</span>
             </div>
           </dd>
 
-          <dt>Frameworks &amp; Platforms</dt>
+          <dt>Coursework &amp; integration</dt>
           <dd>
             <div class="tag-group">
-              <span class="tag">Flask</span>
-              <span class="tag">Google Gemini API</span>
-              <span class="tag">AWS</span>
-            </div>
-          </dd>
-
-          <dt>Typesetting</dt>
-          <dd>
-            <div class="tag-group">
-              <span class="tag">Typst</span>
-              <span class="tag">Overleaf (LaTeX)</span>
+              <span class="tag">HTTP/JSON</span><span class="tag">RxJS</span><span class="tag">Google Gemini API</span><span class="tag">Bayesian networks</span>
             </div>
           </dd>
 
@@ -204,7 +165,7 @@
           <dd>
             <div class="tag-group">
               <span class="tag">Claude Code</span>
-              <span class="tag">Claude.ai</span>
+              <span class="tag">ChatGPT</span>
               <span class="tag">Gemini</span>
             </div>
           </dd>
@@ -231,13 +192,7 @@
           <p>BSc Computer Science</p>
           <p class="text-muted edu-coursework-label">Coursework</p>
           <div class="tag-group">
-            <span class="tag">Data Structures &amp; Algorithms</span>
-            <span class="tag">OOP Design</span>
-            <span class="tag">Database Systems (Oracle SQL)</span>
-            <span class="tag">Computer Systems &amp; Network Security</span>
-            <span class="tag">Assembly (MARIE)</span>
-            <span class="tag">Data Analysis &amp; Modeling</span>
-            <span class="tag">Discrete Mathematics &amp; Probability</span>
+            <span class="tag">Artificial Intelligence</span><span class="tag">Programming Paradigms</span><span class="tag">Computer Science Workshop</span><span class="tag">Theory of Computation</span><span class="tag">Data Structures &amp; Algorithms</span>
           </div>
         </div>
       </div>
@@ -253,7 +208,7 @@
     <section id="looking-ahead">
       <div class="section-card">
         <h2><span class="prompt">effy@monash ~ $</span> cat looking-ahead.txt</h2>
-        <p>I'm still figuring out where I'm heading, and I think that's okay. The plan, as much as there is one, is to keep exploring, try things that seem interesting even if they don't work out, and gradually get clearer on what I'm actually good at and what I enjoy doing. I want to be genuinely useful — to the people I work with and to whoever uses what I build. If I can find situations where everyone involved comes out better off, that sounds like the right direction to aim for.</p>
+        <p>From 26 November 2026, I can join an internship focused on AI applications, forward deployed engineering, or software engineering. I would like to work with a team that turns real user needs into tested software and learns from feedback in the field.</p>
       </div>
     </section>
 
