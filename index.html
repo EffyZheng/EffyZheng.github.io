@@ -26,6 +26,7 @@
   <canvas id="topo-canvas" aria-hidden="true"></canvas>
   <canvas id="cat-canvas" aria-hidden="true"></canvas>
 
+  <button id="language-toggle" aria-label="Switch to Chinese">中文</button>
   <button id="theme-toggle" aria-label="Toggle colour scheme"></button>
   <button id="cat-toggle" aria-label="Toggle cat follow mode"></button>
 
@@ -34,9 +35,9 @@
     <section id="hero">
       <div class="hero-content">
         <p class="hero-cmd"><span class="prompt">effy@monash ~ $</span> whoami</p>
-        <h1>Effy Zheng</h1>
-        <p class="tagline" id="tagline">Computer Science student · AI applications &amp; software engineering</p>
-        <p class="availability">Available from 26 November 2026 for at least three months</p>
+        <h1 data-en="Effy Zheng" data-zh="郑婉妍"></h1>
+        <p class="tagline" id="tagline" data-en="Computer Science student · AI applications &amp; software engineering" data-zh="计算机科学本科生 · AI 应用与软件开发"></p>
+        <p class="availability" data-en="Available from 26 November 2026 for at least three months" data-zh="2026 年 11 月 26 日起可到岗，至少实习 3 个月"></p>
         <nav class="social-links" aria-label="Contact and social links">
           <a href="https://github.com/EffyZheng" target="_blank" rel="noopener noreferrer">GitHub</a>
           <a href="https://www.linkedin.com/in/wanyan-zheng" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -47,134 +48,135 @@
 
     <section id="about">
       <div class="section-card">
-        <h2><span class="prompt">effy@monash ~ $</span> cat about.txt</h2>
-        <p>I'm a Computer Science student at Monash University Malaysia. I enjoy getting up to speed on unfamiliar tools, narrowing an open-ended problem into something testable, and checking whether the result actually works. My recent coursework covers AI reasoning and search, a Haskell constraint tool with a browser interface, and Python developer tooling.</p>
-        <p>I'm looking for an internship in AI application engineering, forward deployed engineering, or software engineering where I can help build prototypes, test integrations, investigate failures, and document what I learn. I use AI coding tools, then review their output and test it against concrete cases.</p>
+        <h2><span class="prompt">effy@monash ~ $</span> <span data-en="cat about.txt" data-zh="cat 关于.txt"></span></h2>
+        <p data-en="I'm a Computer Science student at Monash University Malaysia. I enjoy getting up to speed on unfamiliar tools, narrowing an open-ended problem into something testable, and checking whether the result actually works. My recent coursework covers AI reasoning and search, a Haskell constraint tool with a browser interface, and Bash command-line tooling." data-zh="我在莫纳什大学马来西亚校区攻读计算机科学。我喜欢快速熟悉陌生工具，把开放式问题拆成可测试的步骤，并验证实现是否真正可用。近期课程项目包括 AI 推理与搜索、带浏览器界面的 Haskell 约束工具，以及 Bash 命令行工具。"></p>
+        <p data-en="I'm looking for an internship in AI application engineering, forward deployed engineering, software engineering, or data and model evaluation. I can help build prototypes, test integrations, investigate failures, and document what I learn. I use AI coding tools, then review their output and test it against concrete cases." data-zh="我希望寻找 AI 应用、FDE、软件开发，或数据与模型评估相关实习。我可以参与原型开发、接口测试、问题排查和技术记录。我会使用 AI 编程工具辅助开发，并通过测试和代码检查核实输出。"></p>
       </div>
     </section>
 
     <section id="projects">
       <div class="section-card">
-        <h2><span class="prompt">effy@monash ~ $</span> ls projects/</h2>
+        <h2><span class="prompt">effy@monash ~ $</span> <span data-en="ls projects/" data-zh="ls 项目/"></span></h2>
 
         <article class="project">
           <div class="project-header">
-            <h3>Bayesian Network for Diagnostic Reasoning</h3>
-            <p class="project-meta">FIT3080 Artificial Intelligence · Course project · 2026</p>
+            <h3 data-en="Bayesian Network for Diagnostic Reasoning" data-zh="贝叶斯推理网络"></h3>
+            <p class="project-meta" data-en="Artificial Intelligence · Course project · 2026.09–2026.10" data-zh="人工智能课程项目 · 2026.09–2026.10"></p>
           </div>
           <div class="project-tags tag-group">
             <span class="tag">Netica</span><span class="tag">Bayesian networks</span><span class="tag">Model evaluation</span>
           </div>
-          <p class="project-summary">Modelled pneumonia reasoning from risk factors, symptoms, and diagnostic tests, then compared predictions with two simpler baselines.</p>
+          <p class="project-summary" data-en="Modelled pneumonia reasoning from risk factors, symptoms, and diagnostic tests, then compared predictions with two simpler baselines." data-zh="根据风险因素、症状和诊断测试构建肺炎推理网络，并将输出与两个较简单的基线模型比较。"></p>
           <ul class="project-details">
-            <li>Built and parameterised the course network and checked it on supplied cases.</li>
-            <li>Recorded a limitation: the model recognised the no-pneumonia class weakly.</li>
+            <li data-en="Built and parameterised the course network and checked it on supplied cases." data-zh="搭建并设置课程网络，在指定样例上检查推理结果。"></li>
+            <li data-en="Recorded a limitation: the model recognised the no-pneumonia class weakly." data-zh="记录模型对“无肺炎”类别识别较弱的局限；结果仅限课程样例，不代表临床验证。"></li>
           </ul>
         </article>
 
         <article class="project">
           <div class="project-header">
-            <h3>MiniZinc-Lite Constraint Tool</h3>
-            <p class="project-meta">FIT2102 Programming Paradigms · Course project · 2026</p>
+            <h3 data-en="MiniZinc-Lite Constraint Tool" data-zh="MiniZinc-Lite 约束语言工具"></h3>
+            <p class="project-meta" data-en="Programming Paradigms · Course project · 2026.10–2026.11" data-zh="编程范式课程项目 · 2026.10–2026.11"></p>
           </div>
           <div class="project-tags tag-group">
             <span class="tag">Haskell</span><span class="tag">TypeScript</span><span class="tag">RxJS</span><span class="tag">HTTP</span>
           </div>
-          <p class="project-summary">Built a parser and backtracking solver for a supported constraint language, then connected it to a browser interface.</p>
+          <p class="project-summary" data-en="Built a parser and backtracking solver for a supported constraint language, then connected it to a browser interface." data-zh="为受支持的约束语言实现解析、校验与回溯求解，并连接浏览器界面。"></p>
           <ul class="project-details">
-            <li>Validated declarations and references and pruned assignments when constraints failed.</li>
-            <li>Connected the Haskell HTTP service to Run and Save controls; tested models and syntax errors.</li>
+            <li data-en="Validated declarations and references and pruned assignments when constraints failed." data-zh="检查变量声明和引用；约束已失败时提前剪枝，减少无效搜索。"></li>
+            <li data-en="Connected the Haskell HTTP service to Run and Save controls; tested models and syntax errors." data-zh="将 Haskell HTTP 服务接到 TypeScript/RxJS 页面，测试模型运行、结果保存和语法错误反馈。"></li>
           </ul>
         </article>
 
         <article class="project">
           <div class="project-header">
-            <h3>Git Repository Inspector</h3>
-            <p class="project-meta">FIT2109 Computer Science Workshop · Course project · 2026</p>
+            <h3 data-en="Linux Log Analysis Command-Line Tool" data-zh="Linux 日志分析命令行工具"></h3>
+            <p class="project-meta" data-en="Computer Science Workshop · Bash course project · 2026.08–2026.09" data-zh="计算机科学工作坊 · Bash 课程项目 · 2026.08–2026.09"></p>
           </div>
           <div class="project-tags tag-group">
-            <span class="tag">Python</span><span class="tag">Git</span><span class="tag">pytest</span><span class="tag">CLI</span>
+            <span class="tag">Bash</span><span class="tag">Linux</span><span class="tag">Shell testing</span><span class="tag">CLI</span>
           </div>
-          <p class="project-summary">Extended a course-provided command-line tool to inspect Git history and working-tree status.</p>
+          <p class="project-summary" data-en="Built a Bash command-line tool to analyse Linux-style system logs and produce operational summaries." data-zh="编写 Bash 命令行工具分析 Linux 风格系统日志并生成运维摘要。"></p>
           <ul class="project-details">
-            <li>Fixed staged and unstaged status parsing and case-insensitive searches.</li>
-            <li>Checked behaviour with pytest and documented clean setup and reproduction steps.</li>
+            <li data-en="Implemented summary, service events, failed logins, active hosts, and combined report commands." data-zh="实现摘要、服务事件、失败登录、活跃主机和综合报告等命令。"></li>
+            <li data-en="Validated arguments and directories, handled pipeline failures, and tested valid, invalid, and boundary inputs with sample logs." data-zh="校验参数与目录、处理管道失败，并用样例日志测试正常、错误和边界输入。"></li>
           </ul>
         </article>
 
         <article class="project">
           <div class="project-header">
-            <h3>Pacman AI Agents</h3>
-            <p class="project-meta">FIT3080 Artificial Intelligence · Course projects · 2026</p>
+            <h3 data-en="Pacman Search and Learning Agents" data-zh="Pacman 搜索与学习智能体"></h3>
+            <p class="project-meta" data-en="Artificial Intelligence · Course projects · 2026.08–2026.11" data-zh="人工智能课程项目 · 2026.08–2026.11"></p>
           </div>
           <div class="project-tags tag-group">
             <span class="tag">Python</span><span class="tag">A* search</span><span class="tag">Value iteration</span><span class="tag">Q-learning</span>
           </div>
-          <p class="project-summary">Worked through search and reinforcement-learning agents and compared approaches under course test and runtime constraints.</p>
+          <p class="project-summary" data-en="Implemented search and reinforcement-learning agents and compared approaches under course test and runtime constraints." data-zh="实现搜索与强化学习智能体，并在课程测试和运行时限制下比较方案。"></p>
           <ul class="project-details">
-            <li>Built A* and multi-food planning agents and compared candidate routes.</li>
-            <li>Built value-iteration and Q-learning agents; compared parameters and test results.</li>
+            <li data-en="Implemented A* search and multi-food path planning." data-zh="实现 A* 搜索和多目标食物路径规划。"></li>
+            <li data-en="Implemented value iteration and Q-learning; compared local test behaviour and documented weak layouts." data-zh="实现价值迭代和 Q-learning；比较本地测试表现并记录较难地图。"></li>
           </ul>
         </article>
 
         <article class="project">
           <div class="project-header">
-            <h3>Winter Survival Roguelike</h3>
-            <p class="project-meta">Object-Oriented Design · Course project · 2025</p>
+            <h3 data-en="Winter Survival Roguelike" data-zh="冬日生存 Roguelike 游戏"></h3>
+            <p class="project-meta" data-en="Object-Oriented Design · Course project · 2025.08–2025.11" data-zh="面向对象设计课程项目 · 2025.08–2025.11"></p>
           </div>
           <div class="project-tags tag-group">
             <span class="tag">Java</span><span class="tag">Gemini API</span><span class="tag">Error handling</span>
           </div>
-          <p class="project-summary">Extended an existing Java game with NPC behaviour and Gemini-powered dialogue, with fallback behaviour when the API was unavailable.</p>
+          <p class="project-summary" data-en="Extended an existing Java game with NPC behaviour and Gemini-powered dialogue, with fallback behaviour when the API was unavailable." data-zh="在课程提供的 Java 游戏引擎上扩展 NPC 行为和 Gemini 对话；API 不可用时保留核心游戏流程。"></p>
           <ul class="project-details">
-            <li>Worked within a course-provided engine and used a strategy pattern for different NPC behaviours.</li>
-            <li>Handled external API failures so the core game could continue.</li>
+            <li data-en="Worked within a course-provided engine and separated different NPC behaviour strategies." data-zh="基于课程引擎扩展功能，并拆分不同 NPC 的行为逻辑。"></li>
+            <li data-en="Handled external API failures so the core game could continue." data-zh="处理外部 API 调用失败，避免核心流程中断。"></li>
           </ul>
         </article>
 
-        <p class="project-note">Coursework source is private under university policy. I can explain the approach, tests, and limitations in an interview. This site itself is <a href="https://github.com/EffyZheng/EffyZheng.github.io" target="_blank" rel="noopener noreferrer">public on GitHub</a>.</p>
+        <p class="project-note"><span data-en="Coursework source is private under university policy. I can explain the approach, tests, and limitations in an interview. This site itself is" data-zh="课程项目源码按学校要求保持私有；我可以在面试中讲解实现思路、测试和局限。本网站源码"></span> <a href="https://github.com/EffyZheng/EffyZheng.github.io" target="_blank" rel="noopener noreferrer" data-en="is public on GitHub" data-zh="已在 GitHub 公开"></a><span data-en="." data-zh="。"></span></p>
       </div>
     </section>
 
     <section id="skills">
       <div class="section-card">
-        <h2><span class="prompt">effy@monash ~ $</span> cat skills.txt</h2>
+        <h2><span class="prompt">effy@monash ~ $</span> <span data-en="cat skills.txt" data-zh="cat 技能.txt"></span></h2>
         <dl class="skills-grid">
-          <dt>Languages</dt>
+          <dt data-en="Languages" data-zh="编程语言"></dt>
           <dd>
             <div class="tag-group">
-              <span class="tag">Python</span><span class="tag">Haskell</span><span class="tag">TypeScript</span><span class="tag">Java</span><span class="tag">HTML/CSS/JavaScript</span>
+              <span class="tag">Python</span><span class="tag">Bash</span><span class="tag">Haskell</span><span class="tag">TypeScript</span><span class="tag">Java</span><span class="tag" data-en="HTML (basic)" data-zh="HTML（基础）"></span>
             </div>
           </dd>
 
-          <dt>Systems &amp; Tools</dt>
+          <dt data-en="Systems &amp; Tools" data-zh="系统与工具"></dt>
           <dd>
             <div class="tag-group">
-              <span class="tag">Git</span><span class="tag">Linux command line</span><span class="tag">Bash</span><span class="tag">pytest</span><span class="tag">Vitest</span>
+              <span class="tag">Git</span><span class="tag">Linux command line</span><span class="tag">pytest</span><span class="tag">HTTP/JSON</span><span class="tag" data-en="MongoDB (coursework)" data-zh="MongoDB（课程实践）"></span>
             </div>
           </dd>
 
-          <dt>Coursework &amp; integration</dt>
+          <dt data-en="Coursework &amp; integration" data-zh="课程与接口实践"></dt>
           <dd>
             <div class="tag-group">
-              <span class="tag">HTTP/JSON</span><span class="tag">RxJS</span><span class="tag">Google Gemini API</span><span class="tag">Bayesian networks</span>
+              <span class="tag">RxJS</span><span class="tag">Google Gemini API</span><span class="tag">Bayesian networks</span><span class="tag" data-en="Functor / Applicative / Monad (basic)" data-zh="Functor / Applicative / Monad（基础）"></span>
             </div>
           </dd>
 
-          <dt>AI Tooling</dt>
+          <dt data-en="AI coding tools" data-zh="AI 编程工具"></dt>
           <dd>
             <div class="tag-group">
               <span class="tag">Claude Code</span>
+              <span class="tag">Codex</span>
               <span class="tag">ChatGPT</span>
               <span class="tag">Gemini</span>
             </div>
           </dd>
 
-          <dt>Spoken</dt>
+          <dt data-en="Spoken" data-zh="语言"></dt>
           <dd>
             <div class="tag-group">
-              <span class="tag">Mandarin (native)</span>
-              <span class="tag">English (PTE Academic 64)</span>
+              <span class="tag" data-en="Mandarin (native)" data-zh="普通话（母语）"></span>
+              <span class="tag" data-en="English (PTE Academic 64)" data-zh="英语（PTE Academic 64）"></span>
             </div>
           </dd>
         </dl>
@@ -183,16 +185,16 @@
 
     <section id="education">
       <div class="section-card">
-        <h2><span class="prompt">effy@monash ~ $</span> cat education.txt</h2>
+        <h2><span class="prompt">effy@monash ~ $</span> <span data-en="cat education.txt" data-zh="cat 教育.txt"></span></h2>
         <div class="edu-entry">
           <div class="edu-header">
             <strong>Monash University</strong>
-            <span>2025 – present</span>
+            <span data-en="2025.02 – present" data-zh="2025.02—至今"></span>
           </div>
-          <p>BSc Computer Science</p>
-          <p class="text-muted edu-coursework-label">Coursework</p>
+          <p data-en="BSc Computer Science" data-zh="计算机科学学士"></p>
+          <p class="text-muted edu-coursework-label" data-en="Coursework" data-zh="相关课程"></p>
           <div class="tag-group">
-            <span class="tag">Artificial Intelligence</span><span class="tag">Programming Paradigms</span><span class="tag">Computer Science Workshop</span><span class="tag">Theory of Computation</span><span class="tag">Data Structures &amp; Algorithms</span>
+            <span class="tag" data-en="Artificial Intelligence" data-zh="人工智能"></span><span class="tag" data-en="Programming Paradigms" data-zh="编程范式"></span><span class="tag" data-en="Computer Science Workshop" data-zh="计算机科学工作坊"></span><span class="tag" data-en="Theory of Computation" data-zh="计算理论"></span><span class="tag" data-en="Databases" data-zh="数据库系统"></span><span class="tag" data-en="Data Structures &amp; Algorithms" data-zh="数据结构与算法"></span>
           </div>
         </div>
       </div>
@@ -200,22 +202,22 @@
 
     <section id="currently-learning">
       <div class="section-card">
-        <h2><span class="prompt">effy@monash ~ $</span> cat learning.txt</h2>
-        <p>Japanese. Still at the stage where I'm proud of myself for reading a train sign correctly.</p>
+        <h2><span class="prompt">effy@monash ~ $</span> <span data-en="cat learning.txt" data-zh="cat 学习中.txt"></span></h2>
+        <p data-en="Japanese. Still at the stage where I'm proud of myself for reading a train sign correctly." data-zh="正在学习日语，目前读对车站指示牌就值得表扬自己。"></p>
       </div>
     </section>
 
     <section id="looking-ahead">
       <div class="section-card">
-        <h2><span class="prompt">effy@monash ~ $</span> cat looking-ahead.txt</h2>
-        <p>From 26 November 2026, I can join an internship for at least three months focused on AI applications, forward deployed engineering, or software engineering. I would like to work with a team that turns real user needs into tested software and learns from feedback in the field.</p>
+        <h2><span class="prompt">effy@monash ~ $</span> <span data-en="cat looking-ahead.txt" data-zh="cat 求职意向.txt"></span></h2>
+        <p data-en="From 26 November 2026, I can join an internship for at least three months focused on AI applications, forward deployed engineering, software development, or data and model evaluation. I would like to work with a team that turns real user needs into tested software and learns from feedback." data-zh="我可从 2026 年 11 月 26 日起到岗，连续实习至少 3 个月，方向包括 AI 应用、FDE、软件开发以及数据或模型评估。我希望参与把真实需求转化为经过测试的软件，并根据反馈持续改进。"></p>
       </div>
     </section>
 
   </main>
 
   <footer>
-    <p>Effy Zheng · <span id="footer-year"></span></p>
+    <p><span data-en="Effy Zheng" data-zh="郑婉妍"></span> · <span id="footer-year"></span></p>
   </footer>
 
   <script src="main.js"></script>

@@ -2,6 +2,9 @@
 
 Personal website hosted on GitHub Pages.
 
+The site supports English and Simplified Chinese. Use the language button in the
+top-right corner; the selected language is saved in the browser.
+
 ## Tech Stack
 
 - Static HTML / CSS / JavaScript
