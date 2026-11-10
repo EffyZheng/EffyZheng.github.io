@@ -204,7 +204,7 @@ section.is-visible .section-card > *:nth-child(8)  { transition-delay: 420ms; }
 }
 
 #language-toggle {
-  right: 11.5rem;
+  right: 15rem;
 }
 
 #cat-toggle {
