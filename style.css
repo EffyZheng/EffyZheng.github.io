@@ -62,6 +62,7 @@ body {
 
 /* Monospace UI layer */
 h1, h2, h3,
+#language-toggle,
 #theme-toggle,
 #cat-toggle,
 .prompt,
@@ -180,6 +181,7 @@ section.is-visible .section-card > *:nth-child(8)  { transition-delay: 420ms; }
 }
 
 /* ── Theme toggle ────────────────────────────────────────── */
+#language-toggle,
 #theme-toggle,
 #cat-toggle {
   position: fixed;
@@ -201,10 +203,15 @@ section.is-visible .section-card > *:nth-child(8)  { transition-delay: 420ms; }
   right: 1rem;
 }
 
+#language-toggle {
+  right: 11.5rem;
+}
+
 #cat-toggle {
   right: 6.5rem;
 }
 
+#language-toggle:hover,
 #theme-toggle:hover,
 #cat-toggle:hover {
   border-color: var(--accent);
